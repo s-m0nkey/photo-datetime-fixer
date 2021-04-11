@@ -3,14 +3,6 @@ import time
 import glob
 from exif_manager import ExifManager
 
-"""
-photo_datetime_fixer
-Usage: python3 photo_datetime_restorer.py <dir> <fix_id>
-指定したディレクトリ内のファイルについて、
-    1. photo_date_fixer で修正した DateTimeOriginal をfix_idが一致したコメントを基に元に戻す。
-    2. その旨をUserCommentに追記
-"""
-
 print("+----------------------------+")
 print("| Photo Date & Time Restorer |")
 print("+----------------------------+")
