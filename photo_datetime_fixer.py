@@ -3,21 +3,9 @@ import time
 import glob
 from exif_manager import ExifManager
 
-"""
-指定したディレクトリ内のファイルを名前順で最初から確認していく
-撮影日時(DateTimeOriginal)がおかしなことになっていそうなファイルを見つけたら修正
-    その前後の正しそうなファイルの撮影日時の間にする
-        複数なら均等に割る
-        1番目のファイルは何もしない
-        ラストのファイルがおかしそうなら直前の正しい写真から1sずつ加算
-    UserComment追記
-"""
-
 print("+-------------------------+")
 print("| Photo Date & Time Fixer |")
 print("+-------------------------+")
-
-
 
 # exif情報の修正を行う関数
 # ラストのファイルが対象の場合にはdate_time_afterをnullとする
