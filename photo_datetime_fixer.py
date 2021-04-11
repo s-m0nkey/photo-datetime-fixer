@@ -61,7 +61,8 @@ files.sort()
 date_time_before = ""    # 最後に発見した正しそうな日付
 
 print("Target Dir: " + target_dir)
-print("Fix ID: " + fix_id + "\n")
+print("Fix ID: " + fix_id)
+print()
 
 for file in files:
     print(file.split("/")[-1] + ": ", end='')   # 対象ファイル
