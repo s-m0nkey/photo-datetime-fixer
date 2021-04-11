@@ -3,6 +3,11 @@ import time
 import glob
 from exif_manager import ExifManager
 
+"""
+## Usage
+python3 photo_datetime_restorer.py <dir> <fix_id>
+"""
+
 print("+----------------------------+")
 print("| Photo Date & Time Restorer |")
 print("+----------------------------+")

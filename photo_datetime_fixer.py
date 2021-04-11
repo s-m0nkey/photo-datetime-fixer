@@ -3,9 +3,16 @@ import time
 import glob
 from exif_manager import ExifManager
 
+"""
+## Usage
+python3 photo_datetime_fixer.py <dir>
+"""
+
 print("+-------------------------+")
 print("| Photo Date & Time Fixer |")
 print("+-------------------------+")
+
+
 
 # exif情報の修正を行う関数
 # ラストのファイルが対象の場合にはdate_time_afterをnullとする

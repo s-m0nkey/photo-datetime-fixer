@@ -41,14 +41,46 @@ class ExifManager:
         space = ""
         if self.user_comment:
             space = " "
+        comment_str = self.user_comment + space + comment
 
         subprocess.run(
             "exiftool -overwrite_original " + 
             "-DateTimeOriginal=\"" + new_date_time + "\" " + 
-            "-UserComment=\"" + self.user_comment + space + comment + "\" " + 
+            "-UserComment=\"" + comment_str + "\" " + 
             self.target_file,
             stdout = subprocess.DEVNULL,stderr = subprocess.DEVNULL, shell=True
             )
+        
+        self.user_comment = comment_str
+        self.date_time_original = new_date_time
+    
+    # UserComment を更新(指定idのfix/restoreのコメントを削除)
+    def forget_exif(self, id):
+        tmp = self.user_comment.split("edDateTimeOriginal_" + id +"[")
+        if tmp[0][-3:] == "Fix":
+            comment_str = tmp[0][:-4]
+        elif tmp[0][-6:] == "Restor":
+            comment_str = tmp[0][:-7]
+        else:
+            return self.user_comment
+
+        f = True
+        for str in tmp[1].split("]"):
+            if f:
+                f = False
+                continue
+            comment_str += str + "]"
+        comment_str = comment_str[:-1]
+
+        subprocess.run(
+            "exiftool -overwrite_original " + 
+            "-UserComment=\"" + comment_str + "\" " + 
+            self.target_file,
+            stdout = subprocess.DEVNULL,stderr = subprocess.DEVNULL, shell=True
+            )
+        
+        self.user_comment = comment_str
+        return comment_str
 
     # "yyyy:mm:dd hh:mm:ss" -> 秒
     @classmethod
