@@ -23,7 +23,7 @@ files.sort()
 
 print("Target Dir: " + target_dir)
 print("Fix ID: " + fix_id)
-print("Fix ID: " + restore_id + "\n")
+print("Restore ID: " + restore_id + "\n")
 
 for file in files:
     print(file.split("/")[-1] + ": ", end='')   # 対象ファイル
@@ -33,15 +33,15 @@ for file in files:
         if comments.split("[")[0] == fix_id:
             # 元のDateTimeOriginalに修正
             print("Restore.")
-            restore_info = comments.split("[")[1][:-1].replace("->", "<-")
-            print("  " + restore_info)
-            restore_comment = "FixedDateTimeOriginal_" + restore_id + "[" + restore_info + "]"
-            exif_mamager.write_exif(comments.split("[")[1].split(" ->")[0], restore_comment)
+            daytimes = comments.split("[")[1].split("]")[0].split(" -> ")
+            print("  " + daytimes[1] + " -> " + daytimes[0])
+            restore_comment = "RestoredDateTimeOriginal_" + restore_id + "[" + daytimes[1] + " -> " + daytimes[0] + "]"
+            exif_mamager.write_exif(daytimes[0], restore_comment)
             break
     else:
         print("Skip.")
 
 print()
-print("+-----------+")
-print("| 🍻Fixed🍻 |")
-print("+-----------+")
+print("+-------------+")
+print("| 🍻Restored🍻 |")
+print("+-------------+")
