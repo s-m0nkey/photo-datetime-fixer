@@ -8,9 +8,9 @@ from exif_manager import ExifManager
 python3 photo_datetime_forgetter.py <dir> <fix/restore_id>
 """
 
-print("+--------------------------------+")
-print("| Photo Fix or Restore Forgetter |")
-print("+--------------------------------+")
+print("+-----------------------------+")
+print("| Photo Fix/Restore Forgetter |")
+print("+-----------------------------+")
 
 target_dir = sys.argv[1]
 fix_restore_id = sys.argv[2]
