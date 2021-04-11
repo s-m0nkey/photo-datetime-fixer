@@ -19,6 +19,7 @@ files.sort()
 
 print("Target Dir: " + target_dir)
 print("Fix/Restore ID: " + fix_restore_id)
+print()
 
 for file in files:
     print(file.split("/")[-1] + ": ", end='')   # 対象ファイル
